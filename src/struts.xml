@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="default" extends="struts-default">
+        <action name="login" class="com.action.loginAction" method="execute">
+            <result name="success" type="redirectAction">checkVote</result>
+            <result name="error">/loginForm.jsp</result>
+        </action>
+        <action name="checkVote" class="com.action.loginAction" method="checkVote">
+            <!--yes表示已投票，则直接进入投票结果页面-->
+            <result name="yes">/WEB-INF/content/voteResult.jsp</result>
+            <!--no表示用户还没投票，则直接进入投票页面-->
+            <result name="no">/WEB-INF/content/voteForm.jsp</result>
+        </action>
+        <action name="redirect">
+            <result type="redirect">/registForm.jsp</result>
+        </action>
+        <action name="regist" class="com.action.registAction" method="regist">
+            <result name="success">/WEB-INF/content/voteForm.jsp</result>
+            <result name="error">/registForm.jsp</result>
+        </action>
+        <action name="vote" class="com.action.voteAction">
+            <result name="success">/WEB-INF/content/voteResult.jsp</result>
+            <result name="error">/WEB-INF/content/voteResult.jsp</result>
+        </action>
+        <action name="loginForm">
+            <result>/loginForm.jsp</result>
+        </action>
+    </package>
+</struts>
