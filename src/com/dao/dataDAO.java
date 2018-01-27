@@ -37,6 +37,30 @@ public class dataDAO {
         return null;
     }
 
+    public static List<String> queryAllName() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = DBGet.getConnection();
+            String sql = "select username from user";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            List<String> list = new ArrayList<>();
+            while(rs.next()) {
+                list.add(rs.getString("username"));
+            }
+            return list;
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBGet.closeResultSet(rs);
+            DBGet.closePreparedStatement(ps);
+            DBGet.closeConnection(conn);
+        }
+        return null;
+    }
+
     //添加用户信息到数据库
     public static boolean insertUser(user u) {
         Connection conn = null;

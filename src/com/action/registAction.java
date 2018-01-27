@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.dao.*;
 import com.bean.*;
+import org.apache.struts2.ServletActionContext;
 
 public class registAction extends ActionSupport {
     private String username;
@@ -45,7 +46,8 @@ public class registAction extends ActionSupport {
         //if (!getUsername().equals("") && !getPassword1().equals("") && !getPassword2().equals("") && getPassword1().equals(getPassword2())) {
             u.setPassword(getPassword2());
             if (dataDAO.insertUser(u)) {
-                File f = new File("E:\\IdeaProjects\\OnlineVote\\web\\image");
+                String imgPath = ServletActionContext.getServletContext().getResource("./").getPath() + "/image";
+                File f = new File(imgPath);
                 String[] name = f.list();
                 List<String> list = new ArrayList<>();
                 for(String imgname: name){

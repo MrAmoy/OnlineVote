@@ -1,9 +1,10 @@
 package com.action;
 
 import com.dao.*;
-import com.bean.image;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.ServletActionContext;
+
 import java.io.File;
 import java.util.*;
 
@@ -34,12 +35,11 @@ public class loginAction extends ActionSupport {
     public String execute() throws Exception {
         if(loginCheck.Check(getUsername(),getPassword())) {
             ac.getSession().put("username", getUsername());
-
-            File f = new File("E:\\IdeaProjects\\OnlineVote\\web\\image");
-            //File f = new File(".\\.\\");
+            String imgPath = ServletActionContext.getServletContext().getResource("./").getPath() + "/image";
+            File f = new File(imgPath);
             String[] name = f.list();
             list = new ArrayList<>();
-            for(String imgname: name){
+            for(String imgname: name) {
                 list.add(imgname);
             }
             ac.getSession().put("list", list);
@@ -55,5 +55,11 @@ public class loginAction extends ActionSupport {
             return "yes";
         }
         return "no";
+    }
+
+    public String getAllName() throws Exception {
+        List<String> allName =  dataDAO.queryAllName();
+        ac.getSession().put("allName", allName);
+        return SUCCESS;
     }
 }

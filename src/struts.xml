@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="true"/>
     <package name="default" extends="struts-default">
         <action name="login" class="com.action.loginAction" method="execute">
             <result name="success" type="redirectAction">checkVote</result>
@@ -26,7 +26,7 @@
             <result name="success">/WEB-INF/content/voteResult.jsp</result>
             <result name="error">/WEB-INF/content/voteResult.jsp</result>
         </action>
-        <action name="loginForm">
+        <action name="*" class="com.action.loginAction" method="getAllName">
             <result>/loginForm.jsp</result>
         </action>
     </package>
