@@ -7,7 +7,7 @@ public class DBGet {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/onlinevote";
         String user = "root";
-        String password = "";
+        String password = "root";
         Connection conn = null;
         try {
             //连接SQL Server数据库

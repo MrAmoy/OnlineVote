@@ -44,6 +44,7 @@
                                                     }
                                                 %>
                                             </select>
+                                          <%--<input type="text" name="username" class="txtCon">--%>
                                         </td>
                                     </tr>
                                     <tr>
