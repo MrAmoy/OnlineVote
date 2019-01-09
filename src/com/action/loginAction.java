@@ -4,7 +4,6 @@ import com.dao.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
-
 import java.io.File;
 import java.util.*;
 
@@ -12,7 +11,6 @@ public class loginAction extends ActionSupport {
     private String username;
     private String password;
     private List<String> list;
-
 
     public String getUsername() {
         return username;

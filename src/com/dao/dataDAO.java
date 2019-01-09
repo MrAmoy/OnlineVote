@@ -1,9 +1,7 @@
 package com.dao;
 
 import java.sql.*;
-
 import com.bean.*;
-
 import java.util.List;
 import java.util.ArrayList;
 
